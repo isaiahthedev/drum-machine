@@ -2,11 +2,12 @@ import React from "https://esm.sh/react";
 import ReactDOM from "https://esm.sh/react-dom";
 import { useLayoutEffect, useRef, useState } from 'https://esm.sh/react';
 import ReactMarkdown from "https://esm.sh/react-markdown";
-
+//project makes use of the class component in React
 class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      //initializing the state of the application...
       powerButtonImg: "https://i.postimg.cc/5NZ5mz3s/Power-Button-On.png",
       screenImg: 'https://i.postimg.cc/1zJjmh2n/LCD-Screen-On.png',
       track: "https://i.postimg.cc/Pxzb84J8/Volume-Track-Light.png",
@@ -17,6 +18,7 @@ class DrumMachine extends React.Component {
       pad: Array.from({ length: 9 }, () => 'https://i.postimg.cc/pdwwm3Gt/Pad-Off.png'),
       volume: 0.5,
       displayText: '',
+      // Here are all of the sounds used
       sounds1: [
       { src: "https://od.lk/s/MTBfMjM1MDA3Njg2Xw/Kick%20004.mp3", audio: new Audio() },
       { src: "https://od.lk/s/MTBfMjM1MDA3NzE0Xw/Snare%20002.mp3", audio: new Audio() },
@@ -27,7 +29,6 @@ class DrumMachine extends React.Component {
       { src: "https://od.lk/s/MTBfMjM1MDA3Nzk1Xw/Zay%20Signature%20Perc.mp3", audio: new Audio() },
       { src: "https://od.lk/s/MTBfMjM1MDA3Nzk4Xw/Open%20Hi%20Hat%20001.mp3", audio: new Audio() },
       { src: "https://od.lk/s/MTBfMjM1MDA3Nzk5Xw/Hi%20Hat%20002.mp3", audio: new Audio() }
-      // Add more sounds as needed
       ],
       sounds2: [
       { src: "https://od.lk/s/MTBfMjM1MDA4NjkyXw/1.mp3", audio: new Audio() },
@@ -39,17 +40,17 @@ class DrumMachine extends React.Component {
       { src: "https://od.lk/s/MTBfMjM1MDA4NDkwXw/Lofi%20Kick%20013.mp3", audio: new Audio() },
       { src: "https://od.lk/s/MTBfMjM1MDA4NDg4Xw/Lofi%20Hi%20Hat%20001.mp3", audio: new Audio() },
       { src: "https://od.lk/s/MTBfMjM1MDA4NDg5Xw/Lofi%20Snare%20002.mp3", audio: new Audio() }
-      // Add more sounds as needed
       ] };
-
+    //binding all of the functions so they can be used
     this.power = this.power.bind(this);
     this.bank = this.bank.bind(this);
     this.padPress = this.padPress.bind(this);
     this.padRelease = this.padRelease.bind(this);
     this.setVolume = this.setVolume.bind(this);
   }
-
+  //power function handles when the user turns the app on or off, a different set of images should be used depending on state
   power() {
+    //when app is turned off
     if (this.state.powerButtonImg === "https://i.postimg.cc/5NZ5mz3s/Power-Button-On.png") {
       this.setState({
         powerButtonImg: "https://i.postimg.cc/WbD6r8MD/Power-Button-Off.png",
@@ -63,7 +64,9 @@ class DrumMachine extends React.Component {
         pad: Array.from({ length: 9 }, () => 'https://i.postimg.cc/pdwwm3Gt/Pad-Off.png') });
 
       document.documentElement.style.setProperty('--thumb-background', `url('https://i.postimg.cc/pd7ZTWWS/Volume-Knob-Light-off.png')`);
-    } else
+    } 
+    //when app is turned on
+    else
     {
       this.setState({
         powerButtonImg: "https://i.postimg.cc/5NZ5mz3s/Power-Button-On.png",
@@ -97,6 +100,7 @@ class DrumMachine extends React.Component {
       }
     }
   }
+  //
   padPress(a) {
     if (this.state.powerButtonImg === "https://i.postimg.cc/5NZ5mz3s/Power-Button-On.png") {
       if (a != 0 && a != 1 && a != 2 && a != 3 && a != 4 && a != 5 && a != 6 && a != 7 && a != 8) {
