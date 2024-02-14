@@ -1,6 +1,6 @@
 # Drum Machine
 
-**Description:**
+**Description:** 
 
 Welcome to my Drum Machine App, part of my journey in completing the Front End Development Libraries certificate on FreeCodeCamp. The project was built using HTML, CSS, Javascript, and React.
 
